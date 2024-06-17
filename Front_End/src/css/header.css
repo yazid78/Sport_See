@@ -1,0 +1,21 @@
+.navbar {
+  width: 100%;
+  height: 91px;
+  background-color: black;
+  color: white;
+}
+.logo {
+  width: 178px;
+  height: 60.93px;
+}
+.navlinks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  list-style: none;
+  padding-left: 20px;
+}
+.navlinks li:last-child {
+  margin-right: 7%;
+}
