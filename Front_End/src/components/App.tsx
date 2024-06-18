@@ -1,7 +1,8 @@
 import Header from "./header.tsx"
 import Sidebar from "./sidebar.tsx"
-import LineChartComponent from "./LineChart.tsx"
+import Chart from "./chart.tsx"
 import getData from "../services/serviceData.ts"
+
 
 function App() {
   getData(18)
@@ -9,7 +10,7 @@ function App() {
   return <div>
     <Header />
     <Sidebar />
-    <LineChartComponent />
+    <Chart />
 
   </div>
 

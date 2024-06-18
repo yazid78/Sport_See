@@ -1,0 +1,9 @@
+.mainContainerChart {
+  margin: 140px 90px 88px 210px;
+  width: 100%;
+  min-height: 100vh;
+}
+.titleUser {
+  padding: 10px;
+  margin-bottom: 30px;
+}
