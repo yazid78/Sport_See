@@ -1,18 +1,20 @@
 import Header from "./header.tsx"
 import Sidebar from "./sidebar.tsx"
-import Chart from "./chart.tsx"
+
 import getData from "../services/serviceData.ts"
+import AppRoutes from '../routes.tsx';
 
 
 function App() {
-  getData(18)
 
-  return <div>
-    <Header />
-    <Sidebar />
-    <Chart />
 
-  </div>
+  return (
+    <div>
+      <Header />
+      <Sidebar />
+      <AppRoutes />
+
+    </div>)
 
 
 }

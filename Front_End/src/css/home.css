@@ -1,0 +1,11 @@
+.userName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  flex-direction: column;
+  gap: 10px;
+}
+.userName a {
+  color: black;
+}
