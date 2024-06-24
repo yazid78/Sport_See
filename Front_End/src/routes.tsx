@@ -2,7 +2,7 @@ import Home from './components/home';
 import User from './components/user';
 import { Route, Routes } from 'react-router-dom';
 
-const AppRoutes = () => {  // Change "Routes" to "AppRoutes"
+const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
@@ -11,4 +11,4 @@ const AppRoutes = () => {  // Change "Routes" to "AppRoutes"
     );
 }
 
-export default AppRoutes;  // Export "AppRoutes"
+export default AppRoutes;  
