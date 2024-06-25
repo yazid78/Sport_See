@@ -1,16 +1,35 @@
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-import { LineChart, Line } from 'recharts';
-const data = [
-    { name: 'Page A', uv: 0, pv: 200, amt: 2500 },
-    { name: 'Page A', uv: 4000, pv: 2400, amt: 400 },
-    { name: 'Page A', uv: 40, pv: 2400, amt: 2400 },]
-    ;
-const LineChartComponent = () => {
+interface LineChartComponentProps {
+    data: Array<{ day: string; kilogram: number; calories: number }> | undefined;
+}
+
+const LineChartComponent = ({ data }: LineChartComponentProps) => {
+    console.log(data, 'on est la');
     return (
-        <div>
-            <LineChart width={400} height={400} data={data}>
-                <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-            </LineChart>
+
+        <div style={{ width: 835, height: 320 }}>
+            <ResponsiveContainer>
+                <BarChart
+                    width={500}
+                    height={300}
+                    data={data}
+                    margin={{
+                        top: 5,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
+                    }}
+                >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="day" />
+                    <YAxis orientation="right" />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="kilogram" fill="#282D30" radius={[10, 10, 0, 0]} barSize={10} />
+                    <Bar dataKey="calories" fill="#E60000" radius={[10, 10, 0, 0]} barSize={10} />
+                </BarChart>
+            </ResponsiveContainer>
         </div>
     );
 }

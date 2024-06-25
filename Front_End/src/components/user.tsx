@@ -1,10 +1,10 @@
 
-import Chart from "./chart.tsx"
+import Dashboard from "./Dashboard.tsx"
 
 const User = () => {
     return (
         <div>
-            <Chart />
+            <Dashboard />
         </div>
     );
 }

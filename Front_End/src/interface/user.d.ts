@@ -13,3 +13,15 @@ export interface User {
         "lipidCount": number
     }
 }
+export interface User_Activity {
+    "userId": number,
+    "sessions": [
+        {
+            "day": string,
+            "kilogram": number,
+            "calories": number
+        }
+
+    ]
+
+}

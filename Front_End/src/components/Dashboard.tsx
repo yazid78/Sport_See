@@ -2,45 +2,39 @@ import LineChartComponent from "./LineChart";
 import "../css/chart.css";
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { User } from "../interface/user";
-import { getDataUser } from "../services/serviceData";
+import { User, User_Activity } from "../interface/user";
+import { getDataUser, getDataActivity } from "../services/serviceData";
 
-const Chart = () => {
+const Dashboard = () => {
     const [userData, setUserData] = useState<User | null>(null);
+    const [userActivity, setUserActivity] = useState<User_Activity | null>(null);
     const { id } = useParams();
 
-    // useEffet car asynchrone 
-
     useEffect(() => {
-        const fetchData = async () => {
-
+        const fetchUserData = async () => {
             const userId = id ? parseInt(id) : undefined;
             if (userId !== undefined) {
-                const data: User = await getDataUser(userId);
-                setUserData(data);
-                console.log(data.userInfos, 'yazid');
+                const userData: User = await getDataUser(userId);
+                setUserData(userData);
+
+                const activityData: User_Activity = await getDataActivity(userId);
+                setUserActivity(activityData);
             }
-
         }
-        fetchData();
-
-
+        fetchUserData();
     }, [id]);
+
     return (
-
         <div className="mainContainerChart">
-
             <div className="titleUser">
                 <h1>Bonjour {userData?.userInfos.firstName}</h1>
                 <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
             </div>
-
             <div>
-                <LineChartComponent />
+                <LineChartComponent data={userActivity?.sessions} />
             </div>
         </div>
-
     );
 }
 
-export default Chart;
+export default Dashboard;
