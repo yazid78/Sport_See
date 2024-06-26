@@ -25,3 +25,13 @@ export interface User_Activity {
     ]
 
 }
+export interface User_Average_Sessions {
+
+    "userId": number,
+    "sessions": [
+        {
+            "day": number,
+            "sessionLength": number
+        }
+    ]
+}

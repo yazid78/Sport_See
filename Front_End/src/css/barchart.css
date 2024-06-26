@@ -1,0 +1,7 @@
+.legendActivity {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  margin-right: 52px;
+  margin-left: 20px;
+}

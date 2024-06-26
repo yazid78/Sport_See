@@ -1,13 +1,17 @@
-import LineChartComponent from "./LineChart";
-import "../css/chart.css";
+import BarChartComponent from "./BarChart";
+import "../css/dashboard.css"
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { User, User_Activity } from "../interface/user";
-import { getDataUser, getDataActivity } from "../services/serviceData";
+import { User, User_Activity, User_Average_Sessions } from "../interface/user";
+import { getDataUser, getDataActivity, getDataUserAverageSessions } from "../services/serviceData";
+import Cards from "./cards";
+import LineChartComponent from "./LineChart";
+
 
 const Dashboard = () => {
     const [userData, setUserData] = useState<User | null>(null);
     const [userActivity, setUserActivity] = useState<User_Activity | null>(null);
+    const [userAverageSessions, setUserAverageSessions] = useState<User_Average_Sessions | null>(null);
     const { id } = useParams();
 
     useEffect(() => {
@@ -19,6 +23,9 @@ const Dashboard = () => {
 
                 const activityData: User_Activity = await getDataActivity(userId);
                 setUserActivity(activityData);
+
+                const AverageSessionsData: User_Average_Sessions = await getDataUserAverageSessions(userId);
+                setUserAverageSessions(AverageSessionsData);
             }
         }
         fetchUserData();
@@ -30,8 +37,13 @@ const Dashboard = () => {
                 <h1>Bonjour {userData?.userInfos.firstName}</h1>
                 <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
             </div>
-            <div>
-                <LineChartComponent data={userActivity?.sessions} />
+            <div className="containerDashboard">
+                {userActivity && <BarChartComponent data={userActivity.sessions} />}
+                {userData && <Cards data={userData.keyData} />} {/* verifie si userData est non null  */}
+                <div>
+                    {userAverageSessions && <LineChartComponent data={userAverageSessions.sessions} />}
+
+                </div>
             </div>
         </div>
     );

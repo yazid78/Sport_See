@@ -1,35 +1,32 @@
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { CartesianGrid, Line, LineChart, Tooltip, } from "recharts";
+import { User_Average_Sessions } from "../interface/user";
+
 
 interface LineChartComponentProps {
-    data: Array<{ day: string; kilogram: number; calories: number }> | undefined;
+    data: User_Average_Sessions["sessions"];
 }
 
 const LineChartComponent = ({ data }: LineChartComponentProps) => {
-    console.log(data, 'on est la');
     return (
+        <div>
 
-        <div style={{ width: 835, height: 320 }}>
-            <ResponsiveContainer>
-                <BarChart
-                    width={500}
-                    height={300}
-                    data={data}
-                    margin={{
-                        top: 5,
-                        right: 30,
-                        left: 20,
-                        bottom: 5,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="day" />
-                    <YAxis orientation="right" />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="kilogram" fill="#282D30" radius={[10, 10, 0, 0]} barSize={10} />
-                    <Bar dataKey="calories" fill="#E60000" radius={[10, 10, 0, 0]} barSize={10} />
-                </BarChart>
-            </ResponsiveContainer>
+            <LineChart width={258} height={263} data={data}
+                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" />
+
+                <Tooltip />
+
+                <Line type="monotone" dataKey="sessionLength" stroke="#82ca9d" />
+            </LineChart>
+            <div className="legend" style={{ display: "flex", gap: 20, width: 258, justifyContent: "center" }}>
+                <p>L</p>
+                <p>M</p>
+                <p>M</p>
+                <p>J</p>
+                <p>V</p>
+                <p>S</p>
+                <p>D</p>
+            </div>
         </div>
     );
 }
