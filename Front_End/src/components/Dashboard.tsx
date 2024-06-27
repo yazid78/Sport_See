@@ -38,13 +38,23 @@ const Dashboard = () => {
                 <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
             </div>
             <div className="containerDashboard">
-                {userActivity && <BarChartComponent data={userActivity.sessions} />}
-                {userData && <Cards data={userData.keyData} />} {/* verifie si userData est non null  */}
-                <div>
-                    {userAverageSessions && <LineChartComponent data={userAverageSessions.sessions} />}
+
+                <div className="leftContainer">
+                    {userActivity && <BarChartComponent data={userActivity.sessions} />}
+                    <div className="cardsGraphic">
+                        {userAverageSessions && <LineChartComponent data={userAverageSessions.sessions} />}
+                        {userAverageSessions && <LineChartComponent data={userAverageSessions.sessions} />}
+                        {userAverageSessions && <LineChartComponent data={userAverageSessions.sessions} />}
+                    </div>
 
                 </div>
+                {userData && <Cards data={userData.keyData} />} {/* verifie si userData est non null  */}
             </div>
+
+
+
+
+
         </div>
     );
 }

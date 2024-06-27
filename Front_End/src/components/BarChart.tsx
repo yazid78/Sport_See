@@ -12,12 +12,10 @@ const BarChartComponent = ({ data }: BarChartComponentProps) => {
 
     return (
 
-        <div style={{ width: "100%", height: "320px" }}>
-            <div className='legendActivity'> <div>Activité quotidienne</div><img src={legend} alt="" /></div>
+        <div className='containerBarChart' style={{ width: "100%", height: "320px" }}>
+            <div className='legendActivity'> <div>Activité quotidienne</div><img src={legend} alt="legend graphic" /></div>
             <ResponsiveContainer>
                 <BarChart
-                    width={500}
-                    height={300}
                     data={data}
                     margin={{
                         top: 5,

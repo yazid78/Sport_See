@@ -1,9 +1,8 @@
 .containerCards {
   width: 258px;
-  max-width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 50px;
 }
 .cards {
   background-color: #fbfbfb;
