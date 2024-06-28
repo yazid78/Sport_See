@@ -9,15 +9,14 @@ interface LineChartComponentProps {
 const LineChartComponent = ({ data }: LineChartComponentProps) => {
     return (
         <div className="ContainerLineChart">
-            <ResponsiveContainer min-width="258px" height={263}>
-                <LineChart data={data}
-                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
+            <ResponsiveContainer>
+                <LineChart data={data}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={false} />
                     <Tooltip />
-                    <Line type="monotone" dataKey="sessionLength" stroke="#82ca9d" />
+                    <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" dot={false} />
                 </LineChart>
             </ResponsiveContainer>
-            <div className="legend" style={{ display: "flex", gap: 20, justifyContent: "center" }}>
+            <div className="legend">
                 <p>L</p>
                 <p>M</p>
                 <p>M</p>

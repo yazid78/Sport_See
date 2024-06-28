@@ -2,16 +2,18 @@ import BarChartComponent from "./BarChart";
 import "../css/dashboard.css"
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { User, User_Activity, User_Average_Sessions } from "../interface/user";
-import { getDataUser, getDataActivity, getDataUserAverageSessions } from "../services/serviceData";
+import { User, User_Activity, User_Average_Sessions, User_Performance } from "../interface/user";
+import { getDataUser, getDataActivity, getDataUserAverageSessions, getDataUserPerformance } from "../services/serviceData";
 import Cards from "./cards";
 import LineChartComponent from "./LineChart";
+import RadarChartComponent from "./RadarChart";
 
 
 const Dashboard = () => {
     const [userData, setUserData] = useState<User | null>(null);
     const [userActivity, setUserActivity] = useState<User_Activity | null>(null);
     const [userAverageSessions, setUserAverageSessions] = useState<User_Average_Sessions | null>(null);
+    const [UserPerformance, setUserPerformance] = useState<User_Performance | null>(null);
     const { id } = useParams();
 
     useEffect(() => {
@@ -26,6 +28,9 @@ const Dashboard = () => {
 
                 const AverageSessionsData: User_Average_Sessions = await getDataUserAverageSessions(userId);
                 setUserAverageSessions(AverageSessionsData);
+
+                const UserPerformance: User_Performance = await getDataUserPerformance(userId);
+                setUserPerformance(UserPerformance);
             }
         }
         fetchUserData();
@@ -43,7 +48,8 @@ const Dashboard = () => {
                     {userActivity && <BarChartComponent data={userActivity.sessions} />}
                     <div className="cardsGraphic">
                         {userAverageSessions && <LineChartComponent data={userAverageSessions.sessions} />}
-                        {userAverageSessions && <LineChartComponent data={userAverageSessions.sessions} />}
+                        {UserPerformance && <RadarChartComponent kind={UserPerformance.kind} data={UserPerformance.data} userId={UserPerformance.userId} />}
+
                         {userAverageSessions && <LineChartComponent data={userAverageSessions.sessions} />}
                     </div>
 

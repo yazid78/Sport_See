@@ -1,4 +1,10 @@
 .ContainerLineChart {
   width: 100%;
   height: 263px;
+  background-color: red;
+}
+.legend {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
 }

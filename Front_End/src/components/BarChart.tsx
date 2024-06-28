@@ -8,7 +8,6 @@ interface BarChartComponentProps {
 }
 
 const BarChartComponent = ({ data }: BarChartComponentProps) => {
-    console.log(data, 'ds');
 
     return (
 
@@ -24,12 +23,11 @@ const BarChartComponent = ({ data }: BarChartComponentProps) => {
                         bottom: 5,
                     }}
                 >
-                    <CartesianGrid strokeDasharray="3 3" />
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
                     {/* Warning: XAxis: Support for defaultProps will be removed from function components in a future major release. */}
                     <XAxis />
                     <YAxis orientation="right" />
                     <Tooltip />
-
                     <Bar dataKey="kilogram" fill="#282D30" radius={[10, 10, 0, 0]} barSize={10} />
                     <Bar dataKey="calories" fill="#E60000" radius={[10, 10, 0, 0]} barSize={10} />
                 </BarChart>
