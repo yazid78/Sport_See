@@ -4,18 +4,23 @@ import { User_Performance } from "../interface/user";
 import "../css/radar.css"
 
 
+interface RadarChartComponentProps {
+    data: User_Performance["data"];
+    kind: User_Performance["kind"];
+}
 
-const RadarChartComponent = ({ data, kind }: User_Performance) => {
-    console.log(data, kind, "hello world");
+const RadarChartComponent = ({ data, kind }: RadarChartComponentProps) => {
+    const mergeData = data.map(item => ({ ...item, kindname: kind[item.kind] }));
+    console.log(mergeData, "hello world");
 
     return (
         <div className="containerRadar">
             <ResponsiveContainer width="100%" height="100%">
-                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data} >
-                    <PolarGrid />
-                    <PolarAngleAxis dataKey="data" />
+                <RadarChart cx="50%" cy="50%" outerRadius="60%" data={mergeData} >
+                    <PolarGrid radialLines={false} />
+                    <PolarAngleAxis dataKey="kindname" dy={5} tickSize={15} />
 
-                    <Radar name="Mike" dataKey="kind" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+                    <Radar name="Mike" dataKey="value" fill="red" fillOpacity={0.6} />
                 </RadarChart>
             </ResponsiveContainer>
         </div>

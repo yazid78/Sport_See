@@ -7,6 +7,7 @@ import { getDataUser, getDataActivity, getDataUserAverageSessions, getDataUserPe
 import Cards from "./cards";
 import LineChartComponent from "./LineChart";
 import RadarChartComponent from "./RadarChart";
+import PieChartComponent from "./PieChart";
 
 
 const Dashboard = () => {
@@ -48,19 +49,12 @@ const Dashboard = () => {
                     {userActivity && <BarChartComponent data={userActivity.sessions} />}
                     <div className="cardsGraphic">
                         {userAverageSessions && <LineChartComponent data={userAverageSessions.sessions} />}
-                        {UserPerformance && <RadarChartComponent kind={UserPerformance.kind} data={UserPerformance.data} userId={UserPerformance.userId} />}
-
-                        {userAverageSessions && <LineChartComponent data={userAverageSessions.sessions} />}
+                        {UserPerformance && <RadarChartComponent kind={UserPerformance.kind} data={UserPerformance.data} />}
+                        {userData && <PieChartComponent data={userData.todayScore || userData.score || 0} />}
                     </div>
-
                 </div>
                 {userData && <Cards data={userData.keyData} />} {/* verifie si userData est non null  */}
             </div>
-
-
-
-
-
         </div>
     );
 }

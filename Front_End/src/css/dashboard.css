@@ -14,7 +14,7 @@
 .leftContainer {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 100px;
   width: 75%;
 }
 .cardsGraphic {
