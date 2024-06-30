@@ -18,7 +18,8 @@ const Cards = ({ data }: CardsProps) => {
             <div className="cards">
                 <img className="energy" src={energy} alt="image energy" />
                 <div>
-                    <h3>{data.calorieCount}</h3>
+                    <h3>{data.calorieCount.toLocaleString('en-US')}kCal</h3>
+
                     <p>Calories</p>
                 </div>
             </div>

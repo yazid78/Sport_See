@@ -1,10 +1,45 @@
-.ContainerLineChart {
-  width: 100%;
-  height: 263px;
+.containerLineChart {
+  display: flex;
+  flex-direction: column;
+  position: relative;
   background-color: red;
+  border-radius: 5px;
+  height: 263px;
+  width: 100%;
+  opacity: 0.9;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
 }
+
+.custom-line:before {
+  content: "";
+  width: 30%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.1;
+  position: absolute;
+  right: 0;
+}
+
+.title {
+  color: white;
+  padding-top: 10px;
+  padding-left: 10px;
+  font-size: 15px;
+  max-width: 200px;
+  line-height: 24px;
+  opacity: 0.5;
+}
+
 .legend {
   display: flex;
-  gap: 20px;
   justify-content: space-between;
+  padding: 10px;
+  background-color: red; /* Assure un fond rouge */
+  color: white; /* Assure une bonne visibilité sur le fond rouge */
+}
+
+.legend p {
+  margin: 0;
 }

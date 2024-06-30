@@ -40,7 +40,7 @@ const Dashboard = () => {
     return (
         <div className="mainContainerChart">
             <div className="titleUser">
-                <h1>Bonjour {userData?.userInfos.firstName}</h1>
+                <h1>Bonjour <span>{userData?.userInfos.firstName}</span></h1>
                 <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
             </div>
             <div className="containerDashboard">
