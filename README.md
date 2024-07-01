@@ -14,7 +14,7 @@ SportSee est une application de coaching sportif permettant aux utilisateurs de 
 ### Étapes
 
 1. Clonez le dépôt
-   git clone [https://github.com/votre-utilisateur/sportsee.git](https://github.com/yazid78/Sport_See.git)
+   git clone https://github.com/yazid78/Sport_See.git
 
 ### Démarrer le Backend
 
