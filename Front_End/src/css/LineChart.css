@@ -36,10 +36,20 @@
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background-color: red; /* Assure un fond rouge */
-  color: white; /* Assure une bonne visibilité sur le fond rouge */
+  background-color: red;
+  color: white;
 }
 
 .legend p {
   margin: 0;
+}
+.custom-tooltip {
+  background-color: white;
+  width: 50px;
+  text-align: center;
+}
+@media (max-width: 1440px) {
+  .containerLineChart {
+    margin-bottom: 20px;
+  }
 }

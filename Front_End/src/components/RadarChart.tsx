@@ -1,4 +1,3 @@
-
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import { User_Performance } from "../interface/user";
 import "../css/radarChart.css"
@@ -18,8 +17,8 @@ const RadarChartComponent = ({ data, kind }: RadarChartComponentProps) => {
 
     return (
         <div className="containerRadar">
-            <ResponsiveContainer width="100%" height="100%">
-                <RadarChart cx="50%" cy="50%" outerRadius="60%" data={mergeData} >
+            <ResponsiveContainer >
+                <RadarChart cx="50%" cy="50%" outerRadius="60%" data={mergeData} width={285} height={263}>
                     <PolarGrid radialLines={false} />
                     <PolarAngleAxis dataKey="kindname" dy={5} tickSize={15} tickFormatter={capitalizeFirstLetter} tick={{ fill: '#ffffff', fontSize: 12 }} />
 

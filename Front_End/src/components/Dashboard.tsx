@@ -3,12 +3,8 @@ import "../css/dashboard.css";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { User, User_Activity, User_Average_Sessions, User_Performance } from "../interface/user";
-import {
-    getDataUser,
-    getDataActivity,
-    getDataUserAverageSessions,
-    getDataUserPerformance,
-} from "../services/serviceData";
+import { getDataUser, getDataActivity, getDataUserAverageSessions, getDataUserPerformance, }
+    from "../services/serviceData";
 import Cards from "./cards";
 import LineChartComponent from "./LineChart";
 import RadarChartComponent from "./RadarChart";

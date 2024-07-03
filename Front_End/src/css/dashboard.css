@@ -31,3 +31,14 @@
   margin: 0;
   gap: 15px;
 }
+@media (max-width: 1440px) {
+  .cardsGraphic {
+    display: block;
+  }
+  .leftContainer {
+    width: 100%;
+  }
+  .containerDashboard {
+    display: block;
+  }
+}
