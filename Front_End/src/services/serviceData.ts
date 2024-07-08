@@ -1,7 +1,7 @@
 import axios from "axios";
 import { User, User_Activity, User_Average_Sessions, User_Performance } from "../interface/user";
 
-// Requêter un utilisateur avec un ID donné.
+const apiUrl = "https://sportseebackend-1.onrender.com/user/" || "http://localhost:3000/"
 
 export async function getDataUser(id: number, mocked: boolean): Promise<User> {
   let resultat = null
@@ -24,7 +24,7 @@ export async function getDataUser(id: number, mocked: boolean): Promise<User> {
   }
   else {
     resultat = <User>await axios
-      .get("http://localhost:3000/user/" + id)
+      .get(apiUrl + id)
       .then((response) => response.data.data)
       .catch((error) => console.log(error));
   }
@@ -77,7 +77,7 @@ export async function getDataActivity(id: number, mocked: boolean): Promise<User
   }
   else {
     resultat = <User_Activity>await axios
-      .get("http://localhost:3000/user/" + id + "/activity")
+      .get(apiUrl + id + "/activity")
       .then((response) => response.data.data)
       .catch((error) => console.log(error));
   }
@@ -123,7 +123,7 @@ export async function getDataUserAverageSessions(id: number, mocked: boolean): P
   } else {
 
     resultat = <User_Average_Sessions>await axios
-      .get("http://localhost:3000/user/" + id + "/average-sessions")
+      .get(apiUrl + id + "/average-sessions")
       .then((response) => response.data.data)
       .catch((error) => console.log(error));
   }
@@ -173,7 +173,7 @@ export async function getDataUserPerformance(id: number, mocked: boolean): Promi
   }
   else {
     resultat = <User_Performance>await axios
-      .get("http://localhost:3000/user/" + id + "/performance")
+      .get(apiUrl + id + "/performance")
       .then((response) => response.data.data)
       .catch((error) => console.log(error));
   }
