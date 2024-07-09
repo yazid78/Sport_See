@@ -5,8 +5,8 @@ import { Route, Routes } from 'react-router-dom';
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/user/:id" element={<User />} />
+            <Route path="/Sport_See" element={<Home />} />
+            <Route path="Sport_See/user/:id" element={<User />} />
         </Routes>
     );
 }
