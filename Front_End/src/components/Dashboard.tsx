@@ -3,14 +3,14 @@ import "../css/dashboard.css";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { User, User_Activity, User_Average_Sessions, User_Performance } from "../interface/user";
-import { getDataUser, getDataActivity, getDataUserAverageSessions, getDataUserPerformance, }
-    from "../services/serviceData";
+import { getDataUser, getDataActivity, getDataUserAverageSessions, getDataUserPerformance } from "../services/serviceData";
 import Cards from "./cards";
 import LineChartComponent from "./LineChart";
 import RadarChartComponent from "./RadarChart";
 import PieChartComponent from "./PieChart";
 
 const Dashboard = () => {
+    const [isLoading, setIsLoading] = useState<boolean>(true)
     const [userData, setUserData] = useState<User | null>(null);
     const [userActivity, setUserActivity] = useState<User_Activity | null>(null);
     const [userAverageSessions, setUserAverageSessions] = useState<User_Average_Sessions | null>(null);
@@ -18,28 +18,37 @@ const Dashboard = () => {
     const { id } = useParams();
     const [searchParams] = useSearchParams();
 
-    // localhost:4200/monapplication/id=123&mockedData=true
-
     useEffect(() => {
         const fetchUserData = async () => {
             const userId = id ? parseInt(id) : undefined;
             const useMockedData = searchParams.get('mockedData') === "true" ? !!searchParams.get('mockedData') : false;
             if (userId !== undefined) {
-                const userData: User = await getDataUser(userId, useMockedData);
-                setUserData(userData);
+                try {
+                    setIsLoading(true)
+                    const userData: User = await getDataUser(userId, useMockedData);
+                    setUserData(userData);
 
-                const activityData: User_Activity = await getDataActivity(userId, useMockedData);
-                setUserActivity(activityData);
+                    const activityData: User_Activity = await getDataActivity(userId, useMockedData);
+                    setUserActivity(activityData);
 
-                const AverageSessionsData: User_Average_Sessions = await getDataUserAverageSessions(userId, useMockedData);
-                setUserAverageSessions(AverageSessionsData);
+                    const AverageSessionsData: User_Average_Sessions = await getDataUserAverageSessions(userId, useMockedData);
+                    setUserAverageSessions(AverageSessionsData);
 
-                const UserPerformance: User_Performance = await getDataUserPerformance(userId, useMockedData);
-                setUserPerformance(UserPerformance);
+                    const UserPerformance: User_Performance = await getDataUserPerformance(userId, useMockedData);
+                    setUserPerformance(UserPerformance);
+                } finally {
+                    setIsLoading(false);
+                }
             }
         };
+
         fetchUserData();
     }, [id, searchParams]);
+
+    if (isLoading) {
+        return <p className="loading-container">Loading...</p>;
+    }
+
 
     return (
         <div className="mainContainerChart">
@@ -58,7 +67,7 @@ const Dashboard = () => {
                         {userData && <PieChartComponent data={userData.todayScore || userData.score || 0} />}
                     </div>
                 </div>
-                {userData && <Cards data={userData.keyData} />} {/* verifie si userData est non null  */}
+                {userData && <Cards data={userData.keyData} />}
             </div>
         </div>
     );
