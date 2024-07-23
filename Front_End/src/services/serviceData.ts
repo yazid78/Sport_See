@@ -1,7 +1,7 @@
 import axios from "axios";
 import { User, User_Activity, User_Average_Sessions, User_Performance } from "../interface/user";
 
-const apiUrl = "https://sportseebackend-1.onrender.com/user/" || "http://localhost:3000/"
+const apiUrl = "https://sport-see-1mci.vercel.app/user/" || "http://localhost:3000/"
 
 export async function getDataUser(id: number, mocked: boolean): Promise<User> {
   let resultat = null
